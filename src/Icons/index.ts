@@ -1,0 +1,5 @@
+export { NextJSIcon } from './Next'
+export { ReactIcon } from './React'
+export { JavascriptIcon } from './Javascript'
+export { NodejsIcon } from './Nodejs'
+export { GraphQLIcon } from './GraphQL'
