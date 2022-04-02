@@ -1,9 +1,10 @@
-export const ReactIcon = () => {
+import React from 'react';
+export const ReactIcon: React.FC<any> = ({width, height}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
+      width={width}
+      height={height}
       viewBox="0 0 16 16"
       fill="#3096ff"
     >

@@ -38,11 +38,11 @@ const MainLink = ({ icon, color, label }: MainLinkProps) => {
 const data = [
   { icon: <BrandHtml5 size={16} />, color: "red", label: "HTML" },
   { icon: <BrandCss3 size={16} />, color: "teal", label: "CSS" },
-  { icon: <JavascriptIcon />, color: "yellow", label: "Javascript" },
-  { icon: <ReactIcon />, color: "blue", label: "React" },
-  { icon: <NextJSIcon />, color: "orange", label: "Next.js" },
-  { icon: <NodejsIcon />, color: "green", label: "NodeJs" },
-  { icon: <GraphQLIcon />, color: "pink", label: "GraphQL" },
+  { icon: <JavascriptIcon width="1em" height="1em" />, color: "yellow", label: "Javascript" },
+  { icon: <ReactIcon width="1rem" height="1rem" />, color: "blue", label: "React" },
+  { icon: <NextJSIcon width="1em" height="1em"/>, color: "orange", label: "Next.js" },
+  { icon: <NodejsIcon width="1em" height="1em" />, color: "green", label: "NodeJs" },
+  { icon: <GraphQLIcon width="1em" height="1em" />, color: "pink", label: "GraphQL" },
 
 ];
 
