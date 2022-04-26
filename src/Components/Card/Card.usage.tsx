@@ -1,8 +1,6 @@
 import {
   Card,
-  Image,
   Text,
-  Badge,
   Button,
   Group,
   useMantineTheme,
@@ -22,13 +20,15 @@ import {
 import { Trophy } from "tabler-icons-react";
 import React from "react";
 import { CardProps } from "./Card.model";
+import { useNavigate } from 'react-router-dom';
 
-export const CardWrapper = ({ title, description }: CardProps) => {
+export const CardWrapper = ({ label, description }: CardProps) => {
   const theme = useMantineTheme();
   const secondaryColor = theme.colors.dark[1];
+  const navigation = useNavigate();
 
   const Component: React.FC = () => {
-    switch (title) {
+    switch (label) {
       case "HTML":
         return <HTML width="6em" height="6em" />;
       case "Javascript":
@@ -39,12 +39,16 @@ export const CardWrapper = ({ title, description }: CardProps) => {
         return <NextJSIcon width="6em" height="6em" />;
       case "Nodejs":
         return <NodejsIcon width="6em" height="6em" />;
-      case "GraphQl":
+      case "GraphQL":
         return <GraphQLIcon width="6em" height="6em" />;
       default:
         return <HTML />;
     }
   };
+
+  const navigateHandler = (technologyId: string) => {
+    navigation(`/technology/${technologyId.toLowerCase()}`)
+  }
 
   return (
     <div style={{ width: "200", margin: "auto" }}>
@@ -67,9 +71,9 @@ export const CardWrapper = ({ title, description }: CardProps) => {
           position="apart"
           style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
         >
-          <Text weight={500}>{title}</Text>
+          <Text weight={500}>{label}</Text>
           <RingProgress
-            sections={[{ value: 40, color: "blue" }]}
+            sections={[{ value: 0, color: "blue" }]}
             size={70}
             thickness={4}
             label={
@@ -91,6 +95,7 @@ export const CardWrapper = ({ title, description }: CardProps) => {
           color="blue"
           fullWidth
           style={{ marginTop: 14 }}
+          onClick={navigateHandler.bind(this, label)}
         >
           Start Learning
         </Button>

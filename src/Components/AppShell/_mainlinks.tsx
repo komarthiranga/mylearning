@@ -4,7 +4,8 @@ import {
 } from "tabler-icons-react";
 import React from "react";
 import { ThemeIcon, UnstyledButton, Group, Text } from "@mantine/core";
-import { NextJSIcon, ReactIcon, JavascriptIcon, NodejsIcon, GraphQLIcon} from '../../Icons'
+import { NextJSIcon, ReactIcon, JavascriptIcon, NodejsIcon, GraphQLIcon} from '../../Icons';
+import { useNavigate } from 'react-router-dom';
 
 interface MainLinkProps {
   icon: React.ReactNode;
@@ -12,6 +13,11 @@ interface MainLinkProps {
   color: string;
 }
 const MainLink = ({ icon, color, label }: MainLinkProps) => {
+  const navigation = useNavigate();
+  const navigateHandler = (technologyId: string) => {
+    navigation(`/technology/${technologyId.toLowerCase()}`)
+  }
+
   return (
     <UnstyledButton
       sx={(theme) => ({
@@ -25,7 +31,7 @@ const MainLink = ({ icon, color, label }: MainLinkProps) => {
         },
       })}
     >
-      <Group>
+      <Group  onClick={navigateHandler.bind(this, label)}>
         <ThemeIcon color={color} variant="light">
           {icon}
         </ThemeIcon>
@@ -37,7 +43,7 @@ const MainLink = ({ icon, color, label }: MainLinkProps) => {
 
 const data = [
   { icon: <BrandHtml5 size={16} />, color: "red", label: "HTML" },
-  { icon: <BrandCss3 size={16} />, color: "teal", label: "CSS" },
+  // { icon: <BrandCss3 size={16} />, color: "teal", label: "CSS" },
   { icon: <JavascriptIcon width="1em" height="1em" />, color: "yellow", label: "Javascript" },
   { icon: <ReactIcon width="1rem" height="1rem" />, color: "blue", label: "React" },
   { icon: <NextJSIcon width="1em" height="1em"/>, color: "orange", label: "Next.js" },

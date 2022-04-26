@@ -1,5 +1,11 @@
-import { Alarm } from "tabler-icons-react";
+import { Alarm, CirclePlus } from "tabler-icons-react";
+import { useNavigate } from "react-router-dom";
+import { Group, Text } from "@mantine/core";
 export const Logo = () => {
+  const navigation = useNavigate();
+  const navigateHandler = () => {
+    navigation("/dashboard");
+  };
   return (
     <div
       style={{
@@ -8,6 +14,7 @@ export const Logo = () => {
         justifyContent: "center",
         alignItems: "center",
         marginLeft: "-1em",
+        cursor: "pointer",
       }}
     >
       <Alarm size={30} strokeWidth={2} color={"rgb(51, 154, 240)"} />
@@ -18,9 +25,15 @@ export const Logo = () => {
           color: "#fff",
           fontFamily: "system-ui",
           marginTop: "-3px",
+          display: 'flex',
         }}
+        onClick={navigateHandler}
       >
-        My Learning Hub{" "}
+        <div> My Learning Hub </div>
+        {/* <Group sx={{display: 'flex'}}>
+          <CirclePlus size={20} strokeWidth={1} color={"white"} />
+          <Text>Create New</Text>
+        </Group> */}
       </div>
     </div>
   );

@@ -6,13 +6,23 @@ import {
   MediaQuery,
   useMantineTheme,
   Group,
+  Button,
+  ActionIcon,
 } from "@mantine/core";
 import { NavBar } from "./AppShell.navbar";
 import { Logo } from "./_logo";
+import { Plus } from "tabler-icons-react";
+import { useNavigate } from 'react-router-dom';
 
 export const AppShellWrapper: React.FC<any> = ({ children }) => {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
+  const navigator = useNavigate();
+
+  const navigateTo = () => {
+    navigator('/new-topic');
+  }
+
   return (
     <AppShell
       styles={{
@@ -23,7 +33,7 @@ export const AppShellWrapper: React.FC<any> = ({ children }) => {
       navbarOffsetBreakpoint="sm"
       asideOffsetBreakpoint="sm"
       fixed
-      navbar={<NavBar opened={opened}/>}
+      navbar={<NavBar opened={opened} />}
       header={
         <Header p="md" height={60}>
           <div
@@ -38,8 +48,27 @@ export const AppShellWrapper: React.FC<any> = ({ children }) => {
                 mr="xl"
               />
             </MediaQuery>
-            <Group sx={{ height: "100%" }} px={20} position="apart">
+            <Group sx={{ height: "100%" }} px={20} position="left">
               <Logo />
+            </Group>
+            <Group sx={{ height: "100%", flex: 1 }} px={20} position="right">
+              <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
+                <Button
+                  component="a"
+                  href="#"
+                  variant="outline"
+                  leftIcon={<Plus size={14} />}
+                  onClick={navigateTo}
+                >
+                  Create Topic
+                </Button>
+              </MediaQuery>
+
+              <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+                <ActionIcon variant="default" size={30}>
+                  <Plus size={20} strokeWidth={1} color={"rgb(51, 154, 240)"} />
+                </ActionIcon>
+              </MediaQuery>
             </Group>
           </div>
         </Header>
