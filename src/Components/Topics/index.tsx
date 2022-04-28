@@ -1,10 +1,13 @@
-import { Accordion, Notification } from "@mantine/core";
 import { RichTextEditor } from "@mantine/rte";
 import { useState, useEffect } from "react";
-import { Loader } from '@mantine/core';
+import { Accordion, Loader, Alert } from '@mantine/core';
+import { AlertCircle } from 'tabler-icons-react';
+
 
 const Topics = ({technologyName} : {technologyName: string}): React.ReactElement => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
   let technology = '';
 
   switch (technologyName) {
@@ -29,7 +32,6 @@ const Topics = ({technologyName} : {technologyName: string}): React.ReactElement
     default:
       break;
   } 
-  let loading = true;
   useEffect(() => {
     const get = async () => {
       const rawResponse = await fetch(
@@ -40,16 +42,16 @@ const Topics = ({technologyName} : {technologyName: string}): React.ReactElement
       }
       const content = await rawResponse.json();
       setData(content);
-      loading = false;
+      setLoading(false);
     };
     get();
   }, []);
 
   return (
     <>
-     {!loading && data.length === 0 ?  <Notification title="No Results" disallowClose={true}>
-        Currently there is no results
-      </Notification> : '' }
+     {!loading && data.length === 0 ?   <Alert icon={<AlertCircle size={16} />} title="No Results!" variant="outline">
+      Currently there are no results found!
+    </Alert> : '' }
      {loading && data.length === 0 ? <Loader variant="bars" /> : '' }
       <Accordion>
         {data.map((item, index) => (
