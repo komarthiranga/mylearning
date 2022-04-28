@@ -13,6 +13,7 @@ import {
   GraphQLIcon,
 } from "../../Icons";
 import { useHttp } from '../../Hooks/use-http';
+import { useNavigate } from 'react-router-dom';
 
 const schema = z.object({
   technology: z
@@ -24,6 +25,7 @@ const schema = z.object({
 const FormWrapper = () => {
   const [value, onChange] = React.useState("");
   const { data, error, save } = useHttp({url : 'https://rangakomarthi-learning-hub.herokuapp.com/api/v1/topic/save'});
+  const navigate = useNavigate();
 
   const form = useForm({
     schema: zodResolver(schema),
@@ -77,8 +79,10 @@ const FormWrapper = () => {
   const submitHandler = (values: any) => {
     const requestPayload = {...values, description: value};
     console.log(requestPayload);
-    save(requestPayload);
-    //window.localStorage.setItem('topicData', value);
+    save(requestPayload).then( (response) => {
+      navigate('/dashboard');
+      
+    });
   }
 
   return (

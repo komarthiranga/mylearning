@@ -1,6 +1,7 @@
 import { Accordion, Notification } from "@mantine/core";
 import { RichTextEditor } from "@mantine/rte";
 import { useState, useEffect } from "react";
+import { Loader } from '@mantine/core';
 
 const Topics = ({technologyName} : {technologyName: string}): React.ReactElement => {
   const [data, setData] = useState([]);
@@ -28,7 +29,7 @@ const Topics = ({technologyName} : {technologyName: string}): React.ReactElement
     default:
       break;
   } 
-
+  let loading = true;
   useEffect(() => {
     const get = async () => {
       const rawResponse = await fetch(
@@ -38,17 +39,18 @@ const Topics = ({technologyName} : {technologyName: string}): React.ReactElement
         throw new Error("There some issue");
       }
       const content = await rawResponse.json();
-      console.log(content);
       setData(content);
+      loading = false;
     };
     get();
   }, []);
 
   return (
     <>
-     {data.length === 0 ?  <Notification title="No Results" disallowClose={true}>
+     {!loading && data.length === 0 ?  <Notification title="No Results" disallowClose={true}>
         Currently there is no results
       </Notification> : '' }
+     {loading && data.length === 0 ? <Loader variant="bars" /> : '' }
       <Accordion>
         {data.map((item, index) => (
           <Accordion.Item key={index} label={item["name"]}>
