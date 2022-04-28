@@ -32,7 +32,7 @@ const Topics = ({technologyName} : {technologyName: string}): React.ReactElement
   useEffect(() => {
     const get = async () => {
       const rawResponse = await fetch(
-        `http://localhost:3001/api/v1/topic/${technology}/getTopics`
+        `https://rangakomarthi-learning-hub.herokuapp.com/api/v1/topic/${technology}/getTopics`
       );
       if (!rawResponse.ok) {
         throw new Error("There some issue");

@@ -23,7 +23,7 @@ const schema = z.object({
 
 const FormWrapper = () => {
   const [value, onChange] = React.useState("");
-  const { data, error, save } = useHttp({url : 'http://localhost:3001/api/v1/topic/save'});
+  const { data, error, save } = useHttp({url : 'https://rangakomarthi-learning-hub.herokuapp.com/api/v1/topic/save'});
 
   const form = useForm({
     schema: zodResolver(schema),
