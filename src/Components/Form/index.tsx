@@ -11,6 +11,7 @@ import {
   NextJSIcon,
   NodejsIcon,
   GraphQLIcon,
+  CSS
 } from "../../Icons";
 import { useHttp } from '../../Hooks/use-http';
 import { useNavigate } from 'react-router-dom';
@@ -61,6 +62,8 @@ const FormWrapper = () => {
     switch (title) {
       case "HTML":
         return <HTML width="2em" height="2em" />;
+      case "CSS":
+          return <CSS width="2em" height="2em" />;  
       case "Javascript":
         return <JavascriptIcon width="2em" height="2em" />;
       case "React":
@@ -78,7 +81,6 @@ const FormWrapper = () => {
 
   const submitHandler = (values: any) => {
     const requestPayload = {...values, description: value};
-    console.log(requestPayload);
     save(requestPayload).then( (response) => {
       navigate('/dashboard');
       

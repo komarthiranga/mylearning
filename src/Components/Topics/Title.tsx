@@ -6,6 +6,7 @@ import { ReactIcon } from "../../Icons/React";
 import { NextJSIcon } from "../../Icons/Next";
 import { NodejsIcon } from "../../Icons/Nodejs";
 import { GraphQLIcon } from '../../Icons/GraphQL';
+import { CSS } from '../../Icons/CSS';
 const TitleWrapper = ({
   technologyName,
 }: {
@@ -20,6 +21,9 @@ const TitleWrapper = ({
     case "html":
       technologyIcon = <HTML width="5em" height="5em" />;
       break;
+    case "css":
+      technologyIcon = <CSS width="5em" height="5em" />;
+        break;  
     case "react":
       technologyIcon = <ReactIcon width="5em" height="5em" />;
       break;

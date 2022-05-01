@@ -16,6 +16,7 @@ import {
   NextJSIcon,
   NodejsIcon,
   GraphQLIcon,
+  CSS
 } from "../../Icons";
 import { Trophy } from "tabler-icons-react";
 import React from "react";
@@ -31,6 +32,8 @@ export const CardWrapper = ({ label, description }: CardProps) => {
     switch (label) {
       case "HTML":
         return <HTML width="6em" height="6em" />;
+      case "CSS":
+        return <CSS width="6em" height="6em" />;  
       case "Javascript":
         return <JavascriptIcon width="6em" height="6em" />;
       case "React":

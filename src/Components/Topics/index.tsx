@@ -17,6 +17,9 @@ const Topics = ({technologyName} : {technologyName: string}): React.ReactElement
     case "html":
       technology ='HTML';
       break;
+    case "css":
+        technology ='CSS';
+        break;  
     case "react":
       technology ='React';
       break;

@@ -4,7 +4,12 @@ export const TECH_DATA = [
       label: "HTML",
       value:"HTML",
       description:
-        "HTML is the standard markup language for Web pages. With HTML you can create your own Website.",
+        "HTML is the standard markup language for Web pages. With HTML you can create your own Website. HTML5 is the latest version.",
+    },
+    {
+      label: "CSS",
+      value:"CSS",
+      description: "CSS used for describing the presentation of a document written in a markup language such as HTML.",
     },
     {
       label: "Javascript",
